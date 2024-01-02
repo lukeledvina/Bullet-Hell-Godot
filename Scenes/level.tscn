@@ -1,12 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8vvfgh8cy6vt"]
+[gd_scene load_steps=6 format=3 uid="uid://c8vvfgh8cy6vt"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_7nvdc"]
 [ext_resource type="PackedScene" uid="uid://cyu1ngdgeis8b" path="res://Scenes/player.tscn" id="1_lemwu"]
+[ext_resource type="PackedScene" uid="uid://bywmoiph4ia1d" path="res://Scenes/bug.tscn" id="3_ks7e4"]
+[ext_resource type="Texture2D" uid="uid://b7dbljpgiixi7" path="res://Assets/white_square.png" id="3_vrfrt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btfw6"]
+size = Vector2(19.875, 674.359)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7nvdc")
 
-[node name="Player" parent="." instance=ExtResource("1_lemwu")]
-position = Vector2(559, 357)
+[node name="Boundaries" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(342, 360)
+shape = SubResource("RectangleShape2D_btfw6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(937.75, 359.453)
+shape = SubResource("RectangleShape2D_btfw6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(657, 706)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_btfw6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(635, 14)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_btfw6")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Bug" parent="Enemies" instance=ExtResource("3_ks7e4")]
+position = Vector2(625, 91)
 
 [node name="PlayerProjectiles" type="Node" parent="."]
+
+[node name="PlayableBackground" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(640, 360)
+scale = Vector2(36, 42)
+texture = ExtResource("3_vrfrt")
+
+[node name="Player" parent="." instance=ExtResource("1_lemwu")]
+position = Vector2(628, 580)
+
+[node name="EnemyProjectiles" type="Node" parent="."]
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="ScoreLabel" type="Label" parent="UserInterface/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Score
+"
+
+[node name="ScoreNumber" type="Label" parent="UserInterface/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"

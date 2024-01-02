@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bywmoiph4ia1d"]
+
+[ext_resource type="PackedScene" uid="uid://dqnbidegtwkg6" path="res://Scenes/enemy.tscn" id="1_qoa8x"]
+[ext_resource type="Script" path="res://Scripts/bug.gd" id="2_i7b4u"]
+[ext_resource type="Texture2D" uid="uid://b7dbljpgiixi7" path="res://Assets/white_square.png" id="3_32pgc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnopf"]
+size = Vector2(16, 16)
+
+[node name="Bug" instance=ExtResource("1_qoa8x")]
+script = ExtResource("2_i7b4u")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_tnopf")
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.337255, 0.811765, 0.141176, 1)
+texture = ExtResource("3_32pgc")
