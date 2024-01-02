@@ -1,5 +1,8 @@
 extends Node2D
 
+var player_scene: PackedScene = preload("res://Scenes/player.tscn")
+var player_death_position: Vector2
+
 var projectile_scene: PackedScene = preload("res://Scenes/player_projectile.tscn")
 var projectile_offset: Vector2 = Vector2(0, -8)
 @onready var player_projectile_container: Node = $PlayerProjectiles
@@ -7,6 +10,8 @@ var projectile_offset: Vector2 = Vector2(0, -8)
 
 var enemy_projectile_scene: PackedScene = preload("res://Scenes/enemy_projectile.tscn")
 @onready var enemy_projectile_container: Node = $EnemyProjectiles
+
+@onready var player_death_timer: Timer = $Timers/PlayerDeathTimer
 
 func _ready():
 	$Player.connect("shot", _on_player_shooting)
@@ -33,4 +38,13 @@ func _on_enemy_shooting(enemy_pos):
 	
 	
 func _on_player_killed():
+	player_death_position = $Player.global_position
 	$Player.queue_free()
+	Globals.player_lives -= 1
+	player_death_timer.start()
+
+func _on_player_death_timer_timeout():
+	var player = player_scene.instantiate()
+	player.global_position = player_death_position
+	add_child(player)
+	

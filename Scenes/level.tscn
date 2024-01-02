@@ -83,3 +83,10 @@ text = "Score
 layout_mode = 2
 size_flags_horizontal = 4
 text = "0"
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="PlayerDeathTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="_on_player_death_timer_timeout"]
