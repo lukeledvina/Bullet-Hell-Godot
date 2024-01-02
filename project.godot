@@ -64,9 +64,10 @@ shoot={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemies"
-2d_physics/layer_3="Projectiles"
+2d_physics/layer_3="PlayerProjectiles"
 2d_physics/layer_4="Pickups"
 2d_physics/layer_5="Boundaries"
+2d_physics/layer_6="EnemyProjectiles"
 
 [rendering]
 

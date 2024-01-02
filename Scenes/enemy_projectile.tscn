@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cefurssjse6ps"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_projectile.gd" id="1_aodw2"]
+[ext_resource type="Texture2D" uid="uid://b7dbljpgiixi7" path="res://Assets/white_square.png" id="2_bmb3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuhhv"]
+size = Vector2(8, 12)
+
+[node name="EnemyProjectile" type="Area2D"]
+collision_layer = 32
+collision_mask = 17
+script = ExtResource("1_aodw2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.75)
+texture = ExtResource("2_bmb3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uuhhv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
