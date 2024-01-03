@@ -14,6 +14,12 @@ default_font_size = 25
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7nvdc")
 
+[node name="PlayableBackground" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(640, 360)
+scale = Vector2(36, 42)
+texture = ExtResource("3_vrfrt")
+
 [node name="Boundaries" type="StaticBody2D" parent="."]
 collision_layer = 16
 
@@ -35,20 +41,14 @@ position = Vector2(635, 14)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_btfw6")
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(802, -5)
 
 [node name="Bug" parent="Enemies" instance=ExtResource("3_ks7e4")]
-position = Vector2(625, 91)
 
 [node name="PlayerProjectiles" type="Node" parent="."]
 
 [node name="EnemyProjectiles" type="Node" parent="."]
-
-[node name="PlayableBackground" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(640, 360)
-scale = Vector2(36, 42)
-texture = ExtResource("3_vrfrt")
 
 [node name="Player" parent="." instance=ExtResource("1_lemwu")]
 position = Vector2(628, 580)

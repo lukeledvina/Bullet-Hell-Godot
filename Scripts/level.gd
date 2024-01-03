@@ -30,11 +30,13 @@ func _on_enemy_killed(score_value):
 	Globals.score += score_value
 	score_number_label.text = str(Globals.score)
 	
-func _on_enemy_shooting(enemy_pos):
+func _on_enemy_shooting(enemy_pos, direction):
 	var enemy_projectile = enemy_projectile_scene.instantiate()
 	enemy_projectile.connect("player_killed", _on_player_killed)
 	enemy_projectile_container.add_child(enemy_projectile)
 	enemy_projectile.global_position = enemy_pos - projectile_offset
+	
+	enemy_projectile.direction = direction
 	
 	
 func _on_player_killed():

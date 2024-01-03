@@ -5,6 +5,8 @@ signal enemy_shooting(enemy_pos)
 signal enemy_killed(score_value)
 var score_value: int = 100
 
+var direction: Vector2
+
 var health: int = 1:
 	set(value):
 		if value <= 0:
@@ -13,7 +15,5 @@ var health: int = 1:
 		else:
 			health = value
 
-
-func _on_projectile_cooldown_timeout():
-	emit_signal("enemy_shooting", global_position)
-	
+func attack():
+	emit_signal("enemy_shooting", global_position, direction)
