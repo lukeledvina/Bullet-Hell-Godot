@@ -6,10 +6,10 @@ var speed: int = 100
 var player_layer: int = 1
 var boundary_layer: int = 16
 
-var direction: Vector2
+
 
 func _physics_process(delta):
-	global_position += speed * delta * direction
+	position += speed * delta * transform.x
 
 func _on_body_entered(body):
 	if body.collision_layer == player_layer:
