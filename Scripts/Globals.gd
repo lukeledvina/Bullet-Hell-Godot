@@ -1,6 +1,5 @@
 extends Node
 
-var player_health: int = 1
 var player_lives: int = 3:
 	set(value):
 		player_lives = value

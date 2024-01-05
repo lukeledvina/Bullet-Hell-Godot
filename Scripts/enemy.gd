@@ -3,15 +3,16 @@ class_name Enemy
 
 signal enemy_shooting(enemy_pos)
 signal enemy_killed(score_value)
+signal enemy_projectile_created(projectile)
+
 var score_value: int = 100
 var direction: Vector2
 
-
 var spawn_point_count: int = 3
 var projectile_speed: int = 100
-var arc_degrees: int = 30
-var spacing: int = 15
-var rows: int = 5
+var arc_degrees: int = 120
+var spacing: int = 30
+var rows: int = 10
 var radius: int = 20
 var projectile_scene = preload("res://Scenes/enemy_projectile.tscn")
 @onready var rotater = $Rotater
@@ -50,8 +51,8 @@ func _ready():
 
 func attack():
 	# make rotater's initial rotation in the direction of the player
-	var direction = ($"../../Player".global_position - global_position).normalized()
-	rotater.rotation_degrees = rad_to_deg(direction.angle())# - arc_degrees/2
+	direction = ($"../../Player".global_position - global_position).normalized()
+	rotater.rotation_degrees = rad_to_deg(direction.angle())
 	
 	
 	for point in rotater.get_children():
@@ -62,6 +63,7 @@ func attack():
 		current_scene.add_child.call_deferred(projectile)
 		projectile.position = point.global_position
 		projectile.rotation = point.global_rotation
+		call_deferred("emit_signal", "enemy_projectile_created", projectile)
 	
 	
 
