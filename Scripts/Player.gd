@@ -1,27 +1,29 @@
 extends CharacterBody2D
 
-signal shot(player_pos)
+var projectile_scene: PackedScene = preload("res://Scenes/player_projectile.tscn")
 
 var direction: Vector2
 var speed: int = 300
 
 var can_shoot: bool = true
-var player_death_position: Vector2
 var can_be_damaged: bool = true
 
 @onready var spawn_pos: Vector2 = global_position
-
-
 @onready var player_death_timer: Timer = $PlayerDeathTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var projectile_cooldown: Timer = $ProjectileCooldown
 
 
 func _process(_delta):
 	if Input.is_action_pressed("shoot") and can_shoot:
-		emit_signal("shot", global_position)
+		var projectile = projectile_scene.instantiate()
+		projectile.global_position = global_position
+		var root = get_tree().get_root()
+		var current_scene = root.get_child(root.get_child_count()-1)
+		current_scene.add_child.call_deferred(projectile)
 		can_shoot = false
-		$ProjectileCooldown.start()
+		projectile_cooldown.start()
 		
 	
 func _physics_process(_delta):
@@ -33,7 +35,6 @@ func _physics_process(_delta):
 func death():
 	if can_be_damaged:
 		Globals.player_lives -= 1
-		print(Globals.player_lives)
 		# an animation where the player becomes invincible and flashes / goes invisible for 1 sec
 		animation_player.play("death")
 		collision_shape.call_deferred("set_disabled", true)

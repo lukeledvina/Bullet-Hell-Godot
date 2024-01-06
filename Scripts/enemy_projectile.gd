@@ -8,7 +8,7 @@ var player_layer: int = 1
 
 
 func _physics_process(delta):
-	position += speed * delta * transform.x
+	global_position += speed * delta * transform.x
 
 func _on_body_entered(body):
 	if body.collision_layer == player_layer:

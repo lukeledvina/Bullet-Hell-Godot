@@ -42,7 +42,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_btfw6")
 
 [node name="Enemies" type="Node2D" parent="."]
-position = Vector2(827, 199)
+position = Vector2(483, 5)
 
 [node name="Bug" parent="Enemies" instance=ExtResource("3_ks7e4")]
 

@@ -14,8 +14,10 @@ var arc_degrees: int = 120
 var spacing: int = 30
 var rows: int = 10
 var radius: int = 20
-var projectile_scene = preload("res://Scenes/enemy_projectile.tscn")
-@onready var rotater = $Rotater
+var projectile_scene: PackedScene = preload("res://Scenes/enemy_projectile.tscn")
+@onready var rotater: Node2D = $Rotater
+
+@onready var player: CharacterBody2D = $"../../Player"
 
 var health: int = 1:
 	set(value):
@@ -45,13 +47,12 @@ func _ready():
 			alternator = -alternator
 			
 		current_spacing += spacing
-		
-	attack()
-		
+	
+	movement()
 
 func attack():
 	# make rotater's initial rotation in the direction of the player
-	direction = ($"../../Player".global_position - global_position).normalized()
+	direction = (player.global_position - global_position).normalized()
 	rotater.rotation_degrees = rad_to_deg(direction.angle())
 	
 	
@@ -61,9 +62,13 @@ func attack():
 		var root = get_tree().get_root()
 		var current_scene = root.get_child(root.get_child_count()-1)
 		current_scene.add_child.call_deferred(projectile)
-		projectile.position = point.global_position
-		projectile.rotation = point.global_rotation
+		projectile.global_position = point.global_position
+		projectile.global_rotation = point.global_rotation
 		call_deferred("emit_signal", "enemy_projectile_created", projectile)
 	
-	
+func movement():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", Vector2(-50, 200), 2)
+	await get_tree().create_timer(2).timeout
+	attack()
 
