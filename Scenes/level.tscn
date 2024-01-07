@@ -120,4 +120,6 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelProgressionPoints/LevelProgress1"]
 shape = SubResource("RectangleShape2D_oukaf")
 
+[node name="EnemyProjectiles" type="Node" parent="."]
+
 [connection signal="area_entered" from="LevelProgressionPoints/LevelProgress1" to="." method="_on_level_progress_1_area_entered"]

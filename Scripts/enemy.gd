@@ -20,6 +20,7 @@ var projectile_scene: PackedScene = preload("res://Scenes/enemy_projectile.tscn"
 @onready var rotater: Node2D = $Rotater
 
 @onready var player: CharacterBody2D = $"../../../../Player"
+@onready var enemy_projectile_container: Node = $"../../../../../EnemyProjectiles"
 
 @onready var path_follow: PathFollow2D = $"../"
 var progress_rate: float = 0.1
@@ -72,9 +73,7 @@ func attack():
 		for point in rotater.get_children():
 			var projectile = projectile_scene.instantiate()
 			projectile.speed = projectile_speed
-			var root = get_tree().get_root()
-			var current_scene = root.get_child(root.get_child_count()-1)
-			current_scene.add_child.call_deferred(projectile)
+			enemy_projectile_container.add_child.call_deferred(projectile)
 			projectile.global_position = point.global_position
 			projectile.global_rotation = point.global_rotation
 			call_deferred("emit_signal", "enemy_projectile_created", projectile)
