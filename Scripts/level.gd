@@ -1,28 +1,34 @@
 extends Node2D
 
-var player_scene: PackedScene = preload("res://Scenes/player.tscn")
-@onready var player: CharacterBody2D = $Player
-var player_death_position: Vector2
+var bug: PackedScene = preload("res://Scenes/bug.tscn")
 
-var projectile_scene: PackedScene = preload("res://Scenes/player_projectile.tscn")
-@onready var player_projectile_container: Node = $PlayerProjectiles
-@onready var score_number_label: Label = $UserInterface/MarginContainer/VBoxContainer/ScoreNumber
+@onready var player: CharacterBody2D = $Game/Player
+@onready var score_number_label: Label = $Game/UserInterface/MarginContainer/VBoxContainer/ScoreNumber
+@onready var enemies: Node2D = $Game/Enemies/Path2D/PathFollow2D
+@onready var game: Node2D = $Game
+@onready var enemy_path: PathFollow2D = $Game/Enemies/Path2D/PathFollow2D
+
+var game_scroll_speed: int = 5
+
+func _process(delta):
+	game.global_position.y -= game_scroll_speed * delta
 
 
-func _ready():	
-	for enemy in $Enemies.get_children():
-		enemy.connect("enemy_killed", _on_enemy_killed)
-		enemy.connect("enemy_projectile_created", _on_enemy_projectile_created)
-
-		 
 func _on_enemy_killed(score_value):
 	Globals.score += score_value
 	score_number_label.text = str(Globals.score)
-	
+
+
 func _on_enemy_projectile_created(projectile):
 	projectile.connect("player_killed", _on_player_killed)
-	
+
+
 func _on_player_killed():
 	player.death()
 
-	
+
+func _on_level_progress_1_area_entered(_area):
+	var new_bug = bug.instantiate()
+	new_bug.connect("enemy_killed", _on_enemy_killed)
+	new_bug.connect("enemy_projectile_created", _on_enemy_projectile_created)
+	enemy_path.call_deferred("add_child", new_bug)
