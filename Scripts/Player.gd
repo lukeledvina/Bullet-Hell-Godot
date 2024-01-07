@@ -15,15 +15,14 @@ var is_dead: bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var projectile_cooldown: Timer = $ProjectileCooldown
+@onready var player_projectile_container: Node = $"../../PlayerProjectiles"
 
 
 func _process(_delta):
 	if Input.is_action_pressed("shoot") and can_shoot:
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
-		var root = get_tree().get_root()
-		var current_scene = root.get_child(root.get_child_count()-1)
-		current_scene.add_child.call_deferred(projectile)
+		player_projectile_container.add_child.call_deferred(projectile)
 		can_shoot = false
 		projectile_cooldown.start()
 		
@@ -59,6 +58,6 @@ func _on_projectile_cooldown_timeout():
 
 func _on_player_death_timer_timeout():
 	collision_shape.call_deferred("set_disabled", false)
-	global_position = spawn_pos
+	position = spawn_pos
 	is_dead = false
 	can_be_damaged = true

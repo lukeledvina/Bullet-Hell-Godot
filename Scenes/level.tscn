@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8vvfgh8cy6vt"]
+[gd_scene load_steps=11 format=3 uid="uid://c8vvfgh8cy6vt"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_7nvdc"]
 [ext_resource type="PackedScene" uid="uid://cyu1ngdgeis8b" path="res://Scenes/player.tscn" id="1_lemwu"]
@@ -13,13 +13,20 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Curve2D" id="Curve2D_lyan0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 615, -12, 17.9336, -20.7652, -17.9336, 20.7652, 480, 264, 0, 0, 0, 0, 393, 300, 46.2498, 25.4846, -46.2498, -25.4846, 269, 269, 0, 0, 0, 0, 211, -13)
+}
+point_count = 5
+
 [sub_resource type="Theme" id="Theme_nivjr"]
 default_font_size = 25
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hygon"]
-size = Vector2(184, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oukaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8psa"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7nvdc")
@@ -54,16 +61,13 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_btfw6")
 
 [node name="Enemies" type="Node2D" parent="Game"]
-position = Vector2(527, 165)
 
 [node name="Path2D" type="Path2D" parent="Game/Enemies"]
-position = Vector2(-527, -165)
+position = Vector2(22, -30)
 curve = SubResource("Curve2D_whbn0")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Game/Enemies/Path2D"]
-position = Vector2(769, -24)
-rotates = false
-loop = false
+[node name="Path2D2" type="Path2D" parent="Game/Enemies"]
+curve = SubResource("Curve2D_lyan0")
 
 [node name="Player" parent="Game" instance=ExtResource("1_lemwu")]
 position = Vector2(628, 580)
@@ -107,19 +111,29 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/LevelProgressionArea"]
-position = Vector2(85, -3)
 shape = SubResource("RectangleShape2D_hygon")
 
 [node name="LevelProgressionPoints" type="Node2D" parent="."]
 
 [node name="LevelProgress1" type="Area2D" parent="LevelProgressionPoints"]
 position = Vector2(0, -50)
-collision_layer = 64
+collision_layer = 0
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelProgressionPoints/LevelProgress1"]
 shape = SubResource("RectangleShape2D_oukaf")
 
+[node name="LevelProgress2" type="Area2D" parent="LevelProgressionPoints"]
+position = Vector2(0, -55)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelProgressionPoints/LevelProgress2"]
+shape = SubResource("RectangleShape2D_w8psa")
+
 [node name="EnemyProjectiles" type="Node" parent="."]
 
+[node name="PlayerProjectiles" type="Node" parent="."]
+
 [connection signal="area_entered" from="LevelProgressionPoints/LevelProgress1" to="." method="_on_level_progress_1_area_entered"]
+[connection signal="area_entered" from="LevelProgressionPoints/LevelProgress2" to="." method="_on_level_progress_2_area_entered"]
