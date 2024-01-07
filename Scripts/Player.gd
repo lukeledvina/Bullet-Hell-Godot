@@ -3,8 +3,9 @@ extends CharacterBody2D
 var projectile_scene: PackedScene = preload("res://Scenes/player_projectile.tscn")
 
 var direction: Vector2
-var speed: int = 300
+var speed: float = 300
 var max_speed: int = 300
+var slow_modifier: float = 0.5
 
 var can_shoot: bool = true
 var can_be_damaged: bool = true
@@ -25,6 +26,11 @@ func _process(_delta):
 		player_projectile_container.add_child.call_deferred(projectile)
 		can_shoot = false
 		projectile_cooldown.start()
+		
+	if Input.is_action_pressed("slow"):
+		speed = max_speed * slow_modifier
+	else:
+		speed = max_speed
 		
 	
 func _physics_process(_delta):

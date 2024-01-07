@@ -9,7 +9,7 @@ var bug: PackedScene = preload("res://Scenes/bug.tscn")
 @onready var enemy_path_2: Path2D = $Game/Enemies/Path2D2
 @onready var enemy_projectile_container: Node = $EnemyProjectiles
 
-var game_scroll_speed: int = 5
+var game_scroll_speed: int = 1
 
 func _process(delta):
 	game.global_position.y -= game_scroll_speed * delta
