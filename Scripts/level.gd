@@ -3,7 +3,8 @@ extends Node2D
 var bug: PackedScene = preload("res://Scenes/bug.tscn")
 
 @onready var player: CharacterBody2D = $Game/Player
-@onready var score_number_label: Label = $Game/UserInterface/MarginContainer/VBoxContainer/ScoreNumber
+@onready var score_number_label: Label = $UserInterface/MarginContainer/MainContainer/ScoreContainer/ScoreNumber
+@onready var lives_number_label: Label = $UserInterface/MarginContainer/MainContainer/LivesContainer/LivesNumber
 @onready var game: Node2D = $Game
 @onready var enemy_path_1: Path2D = $Game/Enemies/Path2D
 @onready var enemy_path_2: Path2D = $Game/Enemies/Path2D2
@@ -29,6 +30,7 @@ func _on_player_killed():
 		projectile.queue_free()
 	
 	player.death()
+	lives_number_label.text = str(Globals.player_lives)
 
 func spawn_enemies(amount: int, path: Path2D, enemy_type: PackedScene, time: float):
 	for i in range(amount):	

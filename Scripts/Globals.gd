@@ -8,6 +8,8 @@ var player_lives: int = 3:
 var player_damage: int = 1
 var score: int = 0
 
+var player_alive: bool = true
+
 func game_over():
 	player_lives = 3
 	score = 0

@@ -4,12 +4,11 @@ var projectile_scene: PackedScene = preload("res://Scenes/player_projectile.tscn
 
 var direction: Vector2
 var speed: float = 300
-var max_speed: int = 300
+var max_speed: float = 300
 var slow_modifier: float = 0.5
 
 var can_shoot: bool = true
 var can_be_damaged: bool = true
-var is_dead: bool = false
 
 @onready var spawn_pos: Vector2 = global_position
 @onready var player_death_timer: Timer = $PlayerDeathTimer
@@ -19,7 +18,7 @@ var is_dead: bool = false
 @onready var player_projectile_container: Node = $"../../PlayerProjectiles"
 
 
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_pressed("shoot") and can_shoot:
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
@@ -29,18 +28,17 @@ func _process(_delta):
 		
 	if Input.is_action_pressed("slow"):
 		speed = max_speed * slow_modifier
+	elif not Globals.player_alive:
+		global_position.y -= 1 * delta # move the player at game_scroll_speed
+		speed = 0
 	else:
 		speed = max_speed
-		
+
 	
 func _physics_process(_delta):
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = speed * direction
 	
-	if is_dead:
-		speed = 0
-	else:
-		speed = max_speed
 	
 	move_and_slide()
 	
@@ -53,7 +51,7 @@ func death():
 		collision_shape.call_deferred("set_disabled", true)
 		
 		player_death_timer.start()
-		is_dead = true
+		Globals.player_alive = false
 		can_be_damaged = false
 
 
@@ -65,5 +63,5 @@ func _on_projectile_cooldown_timeout():
 func _on_player_death_timer_timeout():
 	collision_shape.call_deferred("set_disabled", false)
 	position = spawn_pos
-	is_dead = false
+	Globals.player_alive = true
 	can_be_damaged = true
