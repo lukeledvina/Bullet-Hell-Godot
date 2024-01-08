@@ -8,9 +8,13 @@ var bug: PackedScene = preload("res://Scenes/bug.tscn")
 @onready var game: Node2D = $Game
 @onready var enemy_path_1: Path2D = $Game/Enemies/Path2D
 @onready var enemy_path_2: Path2D = $Game/Enemies/Path2D2
-@onready var enemy_projectile_container: Node = $EnemyProjectiles
+@onready var enemy_projectile_container: Node2D = $Game/EnemyProjectiles
+@onready var borders: Node2D = $Game/Borders
 
 var game_scroll_speed: int = 1
+
+func _ready():
+	borders.visible = true
 
 func _process(delta):
 	game.global_position.y -= game_scroll_speed * delta

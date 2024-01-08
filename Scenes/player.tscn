@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cyu1ngdgeis8b"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_c73yg"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_n27cj"]
 [ext_resource type="Texture2D" uid="uid://b7dbljpgiixi7" path="res://Assets/white_square.png" id="2_pf8yi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gume6"]
@@ -16,7 +16,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 30
-script = ExtResource("1_c73yg")
+script = ExtResource("1_n27cj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gume6")

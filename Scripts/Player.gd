@@ -15,7 +15,8 @@ var can_be_damaged: bool = true
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var projectile_cooldown: Timer = $ProjectileCooldown
-@onready var player_projectile_container: Node = $"../../PlayerProjectiles"
+@onready var player_projectile_container: Node2D = $"../PlayerProjectiles"
+@onready var level: Node2D = $"../../"
 
 
 func _process(delta):
@@ -29,7 +30,7 @@ func _process(delta):
 	if Input.is_action_pressed("slow"):
 		speed = max_speed * slow_modifier
 	elif not Globals.player_alive:
-		global_position.y -= 1 * delta # move the player at game_scroll_speed
+		global_position.y -= level.game_scroll_speed * delta
 		speed = 0
 	else:
 		speed = max_speed

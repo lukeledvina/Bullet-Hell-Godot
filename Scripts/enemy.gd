@@ -22,7 +22,7 @@ var projectile_scene: PackedScene = preload("res://Scenes/enemy_projectile.tscn"
 @onready var animation_player = $AnimationPlayer
 
 @onready var player: CharacterBody2D = $"../../../../Player"
-@onready var enemy_projectile_container: Node = $"../../../../../EnemyProjectiles"
+@onready var enemy_projectile_container: Node2D = $"../../../../EnemyProjectiles"
 
 @onready var path_follow: PathFollow2D = $"../"
 var progress_rate: float = 0.2
