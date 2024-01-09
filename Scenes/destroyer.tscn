@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bryoo4pm373u2"]
+
+[ext_resource type="PackedScene" uid="uid://dqnbidegtwkg6" path="res://Scenes/enemy.tscn" id="1_4etnh"]
+[ext_resource type="Texture2D" uid="uid://b7dbljpgiixi7" path="res://Assets/white_square.png" id="2_bsb02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbekn"]
+size = Vector2(16, 16)
+
+[node name="Destroyer" instance=ExtResource("1_4etnh")]
+score_value = 600
+spawn_point_count = 5
+arc_degrees = 180
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_wbekn")
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.996078, 0.635294, 0.376471, 1)
+texture = ExtResource("2_bsb02")

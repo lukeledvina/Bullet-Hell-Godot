@@ -5,28 +5,27 @@ signal enemy_shooting(enemy_pos)
 signal enemy_killed(score_value)
 signal enemy_projectile_created(projectile)
 
-var score_value: int = 100
-var direction: Vector2
 
 var can_attack: bool = true
 
-var spawn_point_count: int = 1
-var projectile_speed: int = 100
-var arc_degrees: int = 60
-var spacing: int = 15
-var rows: int = 5
-var radius: int = 20
-var projectile_scene: PackedScene = preload("res://Scenes/enemy_projectile.tscn")
-@onready var rotater: Node2D = $Rotater
+@export var score_value: int = 100
+@export var spawn_point_count: int = 1
+@export var projectile_speed: int = 100
+@export var arc_degrees: int = 60
+@export var spacing: int = 15
+@export var rows: int = 5
+@export var radius: int = 20
+@export var projectile_scene: PackedScene = preload("res://Scenes/enemy_projectile.tscn")
+@export var progress_rate: float = 0.2
+@export var attack_point: float = 0.3
 
+@onready var rotater: Node2D = $Rotater
 @onready var animation_player = $AnimationPlayer
 
 @onready var player: CharacterBody2D = $"../../../../Player"
 @onready var enemy_projectile_container: Node2D = $"../../../../EnemyProjectiles"
 
 @onready var path_follow: PathFollow2D = $"../"
-var progress_rate: float = 0.2
-var attack_point: float = 0.3
 
 var health: int = 1:
 	set(value):
@@ -72,7 +71,7 @@ func _ready():
 func attack():
 	
 	if can_attack and Globals.player_alive:
-		direction = (player.global_position - global_position).normalized()
+		var direction: Vector2 = (player.global_position - global_position).normalized()
 		rotater.rotation_degrees = rad_to_deg(direction.angle())
 		
 		

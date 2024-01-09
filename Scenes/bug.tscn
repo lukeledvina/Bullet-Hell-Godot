@@ -63,6 +63,9 @@ _data = {
 
 [node name="Bug" instance=ExtResource("1_qoa8x")]
 script = ExtResource("2_i7b4u")
+spawn_point_count = 3
+arc_degrees = 90
+rows = 3
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_tnopf")
