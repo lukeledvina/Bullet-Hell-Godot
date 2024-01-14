@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://br1p1fm7gfjcp"]
+
+[ext_resource type="PackedScene" uid="uid://c8vvfgh8cy6vt" path="res://Scenes/level.tscn" id="1_jyx61"]
+[ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="2_bifxb"]
+[ext_resource type="PackedScene" uid="uid://chebn5kfyuytd" path="res://Scenes/level_progress.tscn" id="3_55fgh"]
+
+[node name="Level1" instance=ExtResource("1_jyx61")]
+script = ExtResource("2_bifxb")
+
+[node name="LevelProgress" parent="LevelProgressionPoints" index="0" instance=ExtResource("3_55fgh")]
+position = Vector2(0, -1)
+
+[connection signal="area_entered" from="LevelProgressionPoints/LevelProgress" to="." method="_on_level_progress_area_entered"]

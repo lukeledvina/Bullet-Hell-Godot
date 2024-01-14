@@ -17,6 +17,7 @@ var can_be_damaged: bool = true
 @onready var projectile_cooldown: Timer = $ProjectileCooldown
 @onready var player_projectile_container: Node2D = $"../PlayerProjectiles"
 @onready var level: Node2D = $"../../"
+@onready var shoot_sound_player: AudioStreamPlayer = $ShootSoundPlayer
 
 
 func _process(delta):
@@ -26,6 +27,7 @@ func _process(delta):
 		player_projectile_container.add_child.call_deferred(projectile)
 		can_shoot = false
 		projectile_cooldown.start()
+		shoot_sound_player.play()
 		
 	if Input.is_action_pressed("slow"):
 		speed = max_speed * slow_modifier

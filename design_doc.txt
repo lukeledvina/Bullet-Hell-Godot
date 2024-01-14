@@ -1,0 +1,29 @@
+Design the first level
+	More types of enemies
+	More paths
+	Script the spawn points
+	
+	Boss enemy implementation
+	
+	Once first level is finished, then start putting in your own art + music
+	
+Once the general idea for the first level is in place for gameplay, art, and music, start working on other levels
+
+
+Draw on paper enemy designs, then implement their gameplay, then make the actual pixel art for the game
+
+
+Setting
+	Post-apocalyptic world w/ mechanical beings that have intertwined with an overgrowing city + environment. ( Think Nier Automata )
+	
+	Player is a female protag, with some mechanical parts ( similar to the legendary "P" ) ->>> P ORGAN POSSIBLE....
+	
+
+
+Types of enemies:
+	Who is our goomba?, a simple enemy that does not even shoot
+	
+	
+Develop a visual language:
+	What colors mean what,
+	what shapes, vfx, etc...
