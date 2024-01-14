@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyu1ngdgeis8b"]
+[gd_scene load_steps=8 format=3 uid="uid://cyu1ngdgeis8b"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n27cj"]
 [ext_resource type="Texture2D" uid="uid://ckd51f1uv8msk" path="res://Assets/player.png" id="2_u4vy5"]
+[ext_resource type="Texture2D" uid="uid://kjjwi4s5ebqa" path="res://Assets/white_circle.png" id="3_jkwh7"]
 [ext_resource type="AudioStream" uid="uid://dgw6mffilay41" path="res://Assets/Audio/shoot-sound.wav" id="3_pqqqe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ptxms"]
@@ -22,15 +23,12 @@ script = ExtResource("1_n27cj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ptxms")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_u4vy5")
 
-[node name="ProjectileCooldown" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
-[node name="PlayerDeathTimer" type="Timer" parent="."]
-one_shot = true
+[node name="HitboxSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_jkwh7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -40,6 +38,13 @@ libraries = {
 [node name="ShootSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_pqqqe")
 volume_db = -20.0
+
+[node name="ProjectileCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="PlayerDeathTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="ProjectileCooldown" to="." method="_on_projectile_cooldown_timeout"]
 [connection signal="timeout" from="PlayerDeathTimer" to="." method="_on_player_death_timer_timeout"]

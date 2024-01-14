@@ -9,6 +9,8 @@ signal enemy_projectile_created(projectile)
 var can_attack: bool = true
 
 @export var score_value: int = 100
+@export var progress_speed: float = 100
+@export var attack_point: float = 300
 @export var spawn_point_count: int = 1
 @export var projectile_speed: int = 100
 @export var arc_degrees: int = 60
@@ -16,8 +18,7 @@ var can_attack: bool = true
 @export var rows: int = 5
 @export var radius: int = 20
 @export var projectile_scene: PackedScene = preload("res://Scenes/enemy_projectile.tscn")
-@export var progress_rate: float = 0.2
-@export var attack_point: float = 0.3
+
 
 @onready var rotater: Node2D = $Rotater
 @onready var animation_player = $AnimationPlayer
@@ -37,9 +38,9 @@ var health: int = 1:
 			
 
 func _process(delta):
-	path_follow.progress_ratio += progress_rate * delta
+	path_follow.progress += progress_speed * delta
 	
-	if path_follow.progress_ratio >= attack_point:
+	if path_follow.progress >= attack_point:
 		attack()
 			
 	if path_follow.progress_ratio >= 1:

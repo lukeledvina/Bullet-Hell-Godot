@@ -7,6 +7,7 @@
 radius = 15.0
 
 [node name="Floaty" instance=ExtResource("1_3pd6u")]
+progress_speed = 150.0
 spawn_point_count = 0
 
 [node name="CollisionShape2D" parent="." index="0"]

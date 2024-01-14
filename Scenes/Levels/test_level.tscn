@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjwsk5syninnu"]
+
+[ext_resource type="PackedScene" uid="uid://c8vvfgh8cy6vt" path="res://Scenes/level.tscn" id="1_fml85"]
+[ext_resource type="Script" path="res://Scripts/test_level.gd" id="2_px0mp"]
+[ext_resource type="PackedScene" uid="uid://chebn5kfyuytd" path="res://Scenes/level_progress.tscn" id="3_0djiu"]
+
+[node name="TestLevel" instance=ExtResource("1_fml85")]
+script = ExtResource("2_px0mp")
+
+[node name="LevelProgress" parent="LevelProgressionPoints" index="0" instance=ExtResource("3_0djiu")]
+
+[connection signal="area_entered" from="LevelProgressionPoints/LevelProgress" to="." method="_on_level_progress_area_entered"]

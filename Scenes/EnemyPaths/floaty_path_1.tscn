@@ -1,6 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bgelqsqea60ur"]
 
-[ext_resource type="Curve2D" uid="uid://dj2o2s31n01v0" path="res://Scenes/EnemyPaths/floaty_path_1_curve.tres" id="1_wry0o"]
+[sub_resource type="Curve2D" id="Curve2D_acftg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -270, 0, -30, -30, 30, 30, -250, 300, -30, 30, 30, -30, 250, 300, 0, 0, 0, 0, 270, 0)
+}
+point_count = 4
 
 [node name="FloatyPath1" type="Path2D"]
-curve = ExtResource("1_wry0o")
+curve = SubResource("Curve2D_acftg")

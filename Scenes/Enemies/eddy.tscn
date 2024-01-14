@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://clf473e20jqf2"]
+
+[ext_resource type="PackedScene" uid="uid://dqnbidegtwkg6" path="res://Scenes/enemy.tscn" id="1_5ygc8"]
+[ext_resource type="Texture2D" uid="uid://b7dbljpgiixi7" path="res://Assets/white_square.png" id="2_yqaw0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glgew"]
+size = Vector2(32, 32)
+
+[node name="Eddy" instance=ExtResource("1_5ygc8")]
+progress_speed = 200.0
+attack_point = 450.0
+spawn_point_count = 3
+rows = 2
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_glgew")
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.431373, 0.380392, 1, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_yqaw0")

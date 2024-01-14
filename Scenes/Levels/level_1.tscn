@@ -10,4 +10,16 @@ script = ExtResource("2_bifxb")
 [node name="LevelProgress" parent="LevelProgressionPoints" index="0" instance=ExtResource("3_55fgh")]
 position = Vector2(0, -1)
 
+[node name="LevelProgress2" parent="LevelProgressionPoints" index="1" instance=ExtResource("3_55fgh")]
+position = Vector2(0, -3)
+
+[node name="LevelProgress3" parent="LevelProgressionPoints" index="2" instance=ExtResource("3_55fgh")]
+position = Vector2(0, -4)
+
+[node name="LevelProgress4" parent="LevelProgressionPoints" index="3" instance=ExtResource("3_55fgh")]
+position = Vector2(0, -6)
+
 [connection signal="area_entered" from="LevelProgressionPoints/LevelProgress" to="." method="_on_level_progress_area_entered"]
+[connection signal="area_entered" from="LevelProgressionPoints/LevelProgress2" to="." method="_on_level_progress_2_area_entered"]
+[connection signal="area_entered" from="LevelProgressionPoints/LevelProgress3" to="." method="_on_level_progress_3_area_entered"]
+[connection signal="area_entered" from="LevelProgressionPoints/LevelProgress4" to="." method="_on_level_progress_4_area_entered"]

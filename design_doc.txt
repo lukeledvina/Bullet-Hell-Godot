@@ -1,3 +1,17 @@
+TODO:
+	Power-ups that occasionally drop from enemies that are missable
+		one type improves damage, size, etc. of player projectile
+		another can build up to restore a life if you collect enough
+		
+		the purpose is to force the player to be constantly making decisions and weighing risk/reward, for potential long or short term benefit
+		
+		green -> 1/10 for life upgrade -> (max lives is 5)
+		red -> adds dmg + small size increase, certain breakpoints make more noticable changes (max is 150, lose 5 on death that can be recollected (maybe))
+
+
+
+
+
 Design the first level
 	More types of enemies
 	More paths
@@ -9,8 +23,6 @@ Design the first level
 	
 Once the general idea for the first level is in place for gameplay, art, and music, start working on other levels
 
-
-Draw on paper enemy designs, then implement their gameplay, then make the actual pixel art for the game
 
 
 Setting

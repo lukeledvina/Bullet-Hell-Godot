@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5tqqj0w46y3p"]
+
+[ext_resource type="PackedScene" uid="uid://dqnbidegtwkg6" path="res://Scenes/enemy.tscn" id="1_wd0xm"]
+[ext_resource type="Texture2D" uid="uid://kjjwi4s5ebqa" path="res://Assets/white_circle.png" id="2_2n3fd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpbm6"]
+radius = 15.1327
+
+[node name="EvilFloaty" instance=ExtResource("1_wd0xm")]
+spawn_point_count = 5
+arc_degrees = 90
+rows = 4
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_mpbm6")
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(1, 0.156863, 0.756863, 1)
+scale = Vector2(-0.5, -0.5)
+texture = ExtResource("2_2n3fd")
