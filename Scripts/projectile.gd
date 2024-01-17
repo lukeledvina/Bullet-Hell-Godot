@@ -10,6 +10,6 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.collision_layer == enemy_layer:
-		body.health -= Globals.player_damage
+		body.health -= 1
 
 	queue_free()

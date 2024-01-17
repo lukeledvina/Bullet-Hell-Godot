@@ -10,6 +10,7 @@ var slow_modifier: float = 0.5
 var can_shoot: bool = true
 var can_be_damaged: bool = true
 
+
 @onready var spawn_pos: Vector2 = global_position
 @onready var player_death_timer: Timer = $PlayerDeathTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -68,3 +69,4 @@ func _on_player_death_timer_timeout():
 	position = spawn_pos
 	Globals.player_alive = true
 	can_be_damaged = true
+

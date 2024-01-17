@@ -16,10 +16,13 @@ var evil_floaty: PackedScene = preload("res://Scenes/Enemies/evil_floaty.tscn")
 @onready var player: CharacterBody2D = $Game/Player
 @onready var score_number_label: Label = $UserInterface/MarginContainer/MainContainer/ScoreContainer/ScoreNumber
 @onready var lives_number_label: Label = $UserInterface/MarginContainer/MainContainer/LivesContainer/LivesNumber
+@onready var damage_power_up_label: Label = $UserInterface/MarginContainer/PowerUpContainer/DamagePowerUpContainer/DamageNumber
+@onready var life_power_up_label: Label = $UserInterface/MarginContainer/PowerUpContainer/LifePowerUpContainer/LifeProgressNumber
 @onready var game: Node2D = $Game
 @onready var enemy_projectile_container: Node2D = $Game/EnemyProjectiles
 @onready var borders: Node2D = $Game/Borders
 @onready var enemy_paths: Node2D = $Game/EnemyPaths
+@onready var power_up_manager: Node = $PowerUpManager
 
 var game_scroll_speed: int = 1
 
@@ -33,9 +36,12 @@ func _process(delta):
 	game.global_position.y -= game_scroll_speed * delta
 
 
-func _on_enemy_killed(score_value, damage_power_up_value, life_power_up_value):
+func _on_enemy_killed(score_value, damage_power_up_progress, life_power_up_progress):
 	Globals.score += score_value
 	score_number_label.text = str(Globals.score)
+
+	# increment values needed to spawn the power ups, if the values are reached, spawn them
+	power_up_manager.update_values(damage_power_up_progress, life_power_up_progress)
 
 
 func _on_enemy_projectile_created(projectile):
