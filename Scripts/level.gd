@@ -33,7 +33,7 @@ func _process(delta):
 	game.global_position.y -= game_scroll_speed * delta
 
 
-func _on_enemy_killed(score_value):
+func _on_enemy_killed(score_value, damage_power_up_value, life_power_up_value):
 	Globals.score += score_value
 	score_number_label.text = str(Globals.score)
 

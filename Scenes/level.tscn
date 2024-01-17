@@ -92,7 +92,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 0
+theme_override_constants/margin_left = 110
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 140
 theme_override_constants/margin_bottom = 0
@@ -133,3 +133,36 @@ text = "Lives"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "3"
+
+[node name="PowerUpContainer" type="VBoxContainer" parent="UserInterface/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("5_dr1fp")
+theme_override_constants/separation = 40
+
+[node name="DamagePowerUpContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/PowerUpContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="DamageLabel" type="Label" parent="UserInterface/MarginContainer/PowerUpContainer/DamagePowerUpContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Damage"
+
+[node name="DamageNumber" type="Label" parent="UserInterface/MarginContainer/PowerUpContainer/DamagePowerUpContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+
+[node name="LifePowerUpContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/PowerUpContainer"]
+layout_mode = 2
+
+[node name="LifeLabel" type="Label" parent="UserInterface/MarginContainer/PowerUpContainer/LifePowerUpContainer"]
+layout_mode = 2
+text = "New Life"
+
+[node name="LifeProgressNumber" type="Label" parent="UserInterface/MarginContainer/PowerUpContainer/LifePowerUpContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0 / 10"

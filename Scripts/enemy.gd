@@ -8,6 +8,8 @@ signal enemy_projectile_created(projectile)
 
 var can_attack: bool = true
 
+@onready var damage_power_up_value: int = 1
+@onready var life_power_up_value
 @export var score_value: int = 100
 @export var progress_speed: float = 100
 @export var attack_point: float = 300
@@ -31,7 +33,7 @@ var can_attack: bool = true
 var health: int = 1:
 	set(value):
 		if value <= 0:
-			emit_signal("enemy_killed", score_value)
+			emit_signal("enemy_killed", score_value, damage_power_up_value, life_power_up_value)
 			queue_free()
 		else:
 			health = value

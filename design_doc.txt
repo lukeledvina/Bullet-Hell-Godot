@@ -8,7 +8,7 @@ TODO:
 		green -> 1/10 for life upgrade -> (max lives is 5)
 		red -> adds dmg + small size increase, certain breakpoints make more noticable changes (max is 150, lose 5 on death that can be recollected (maybe))
 
-
+		DROP RATE -> kill x amt of enemies, get one, certain types of enemies always drop one...
 
 
 
