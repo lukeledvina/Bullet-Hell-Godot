@@ -169,4 +169,4 @@ text = "New Life"
 [node name="LifeProgressNumber" type="Label" parent="UserInterface/MarginContainer/PowerUpContainer/LifePowerUpContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "0 / 10"
+text = "0 / 5"

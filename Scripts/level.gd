@@ -36,12 +36,12 @@ func _process(delta):
 	game.global_position.y -= game_scroll_speed * delta
 
 
-func _on_enemy_killed(score_value, damage_power_up_progress, life_power_up_progress):
+func _on_enemy_killed(score_value, damage_power_up_progress, life_power_up_progress, enemy_position):
 	Globals.score += score_value
 	score_number_label.text = str(Globals.score)
 
 	# increment values needed to spawn the power ups, if the values are reached, spawn them
-	power_up_manager.update_values(damage_power_up_progress, life_power_up_progress)
+	power_up_manager.update_values(damage_power_up_progress, life_power_up_progress, enemy_position)
 
 
 func _on_enemy_projectile_created(projectile):
