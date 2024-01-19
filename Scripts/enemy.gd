@@ -8,6 +8,16 @@ signal enemy_projectile_created(projectile)
 
 var can_attack: bool = true
 
+
+
+@export var health: int = 1:
+	set(value):
+		if value <= 0:
+			emit_signal("enemy_killed", score_value, damage_power_up_value, life_power_up_value, global_position)
+			queue_free()
+		else:
+			health = value
+			
 @export var damage_power_up_value: int = 1
 @export var life_power_up_value: int = 1
 @export var score_value: int = 100
@@ -30,13 +40,6 @@ var can_attack: bool = true
 
 @onready var path_follow: PathFollow2D = $"../"
 
-var health: int = 1:
-	set(value):
-		if value <= 0:
-			emit_signal("enemy_killed", score_value, damage_power_up_value, life_power_up_value, global_position)
-			queue_free()
-		else:
-			health = value
 			
 
 func _process(delta):

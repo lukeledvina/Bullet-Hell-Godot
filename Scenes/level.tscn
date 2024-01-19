@@ -147,12 +147,12 @@ theme_override_constants/separation = 40
 
 [node name="DamagePowerUpContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/PowerUpContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 
 [node name="DamageLabel" type="Label" parent="UserInterface/MarginContainer/PowerUpContainer/DamagePowerUpContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Damage"
+text = "Power"
 
 [node name="DamageNumber" type="Label" parent="UserInterface/MarginContainer/PowerUpContainer/DamagePowerUpContainer"]
 layout_mode = 2
@@ -161,6 +161,7 @@ text = "0"
 
 [node name="LifePowerUpContainer" type="VBoxContainer" parent="UserInterface/MarginContainer/PowerUpContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="LifeLabel" type="Label" parent="UserInterface/MarginContainer/PowerUpContainer/LifePowerUpContainer"]
 layout_mode = 2

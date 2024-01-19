@@ -2,6 +2,8 @@ extends Node
 
 @onready var damage_number_label: Label = $"../UserInterface/MarginContainer/PowerUpContainer/DamagePowerUpContainer/DamageNumber"
 @onready var life_progress_label: Label = $"../UserInterface/MarginContainer/PowerUpContainer/LifePowerUpContainer/LifeProgressNumber"
+@onready var score_number_label: Label = $"../UserInterface/MarginContainer/MainContainer/ScoreContainer/ScoreNumber"
+@onready var lives_number_label: Label = $"../UserInterface/MarginContainer/MainContainer/LivesContainer/LivesNumber"
 
 var damage_power_up_scene: PackedScene = preload("res://Scenes/PowerUps/damage_power_up.tscn")
 var life_power_up_scene: PackedScene = preload("res://Scenes/PowerUps/life_power_up.tscn")
@@ -18,7 +20,7 @@ var life_progress_breakpoint: int = 15
 var next_life_progress: int = 0
 var next_life_breakpoint: int = 5
 var damage_upgrade_breakpoint: int = 20
-var max_damage: int = 150
+var max_damage: int = 200
 var max_lives: int = 5
 
 func update_values(damage_value, life_value, enemy_position):
@@ -47,6 +49,7 @@ func update_values(damage_value, life_value, enemy_position):
 func _on_damage_power_up_collected():
 	if Globals.player_damage >= max_damage:
 		Globals.score += 1000
+		score_number_label.text = str(Globals.score)
 	else:
 	
 		#This currently does nothing	
@@ -69,14 +72,13 @@ func on_life_power_up_collected():
 		next_life_progress = 0
 		if Globals.player_lives >= max_lives:
 			Globals.score += 1000
+			score_number_label.text = str(Globals.score)
 		else:
 			Globals.player_lives += 1
+			lives_number_label.text = str(Globals.player_lives)
 			
-	life_progress_label.text = "%d / 5" % Globals.player_lives
+	life_progress_label.text = "%d / 5" % next_life_progress
 	
 
 func large_damage_upgrade():
-	# increase size, perhaps shooting speed (maybe), change particle effects, etc...
-	# if we want this to actually increase the player_damage, then enemy health has to be reworked.
-	
-	pass
+	Globals.player_projectile_scale += 0.1

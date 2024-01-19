@@ -5,7 +5,9 @@ var player_lives: int = 3:
 		player_lives = value
 		if player_lives <= 0:
 			game_over()
-var player_damage: int = 1
+var player_damage: int = 100
+var player_projectile_scale: float = 1.0
+var player_projectile_speed: float = 600
 var score: int = 0
 
 var player_alive: bool = true
