@@ -8,10 +8,10 @@
 script = ExtResource("2_bifxb")
 
 [node name="Marker2D" type="Marker2D" parent="Game/BossPositions" index="0"]
-position = Vector2(450, 180)
+position = Vector2(450, 200)
 
 [node name="Marker2D2" type="Marker2D" parent="Game/BossPositions" index="1"]
-position = Vector2(820, 180)
+position = Vector2(820, 200)
 
 [node name="Marker2D3" type="Marker2D" parent="Game/BossPositions" index="2"]
 position = Vector2(640, 90)

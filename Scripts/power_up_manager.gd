@@ -23,6 +23,32 @@ var damage_upgrade_breakpoint: int = 20
 var max_damage: int = 200
 var max_lives: int = 5
 
+#spawn the amt of each power up, in locations not overlapping
+func boss_killed(boss_position, damage_power_up_amount, life_power_up_amount):
+	var x_offset: int = -40
+	var y_offset: int = -40
+	for i in range(damage_power_up_amount):
+		if i != 2:
+			var damage_power_up = damage_power_up_scene.instantiate()
+			damage_power_up.global_position = Vector2(boss_position.x + x_offset, boss_position.y + y_offset)
+			call_deferred("add_child", damage_power_up)
+			damage_power_up.connect("collected", _on_damage_power_up_collected)
+			x_offset += 20
+			y_offset += 20
+		else:
+			x_offset += 20
+			y_offset += 20
+	
+	x_offset = -40
+	y_offset = 40
+	for i in range(life_power_up_amount):
+		var life_power_up = life_power_up_scene.instantiate()
+		life_power_up.global_position = Vector2(boss_position.x + x_offset, boss_position.y + y_offset)
+		call_deferred("add_child", life_power_up)
+		life_power_up.connect("collected", on_life_power_up_collected)
+		x_offset += 20
+		y_offset -= 20
+
 func update_values(damage_value, life_value, enemy_position):
 	current_damage_progress += damage_value
 	current_life_progress += life_value

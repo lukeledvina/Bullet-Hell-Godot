@@ -1,23 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjwsk5syninnu"]
+[gd_scene load_steps=4 format=3 uid="uid://bjwsk5syninnu"]
 
 [ext_resource type="PackedScene" uid="uid://c8vvfgh8cy6vt" path="res://Scenes/level.tscn" id="1_fml85"]
 [ext_resource type="Script" path="res://Scripts/test_level.gd" id="2_px0mp"]
 [ext_resource type="PackedScene" uid="uid://chebn5kfyuytd" path="res://Scenes/level_progress.tscn" id="3_0djiu"]
-[ext_resource type="PackedScene" uid="uid://cogixxyioeign" path="res://Scenes/Bosses/boss.tscn" id="3_erjbq"]
 
 [node name="TestLevel" instance=ExtResource("1_fml85")]
 script = ExtResource("2_px0mp")
 
 [node name="Marker2D" type="Marker2D" parent="Game/BossPositions" index="0"]
-position = Vector2(450, 180)
+position = Vector2(450, 200)
 
 [node name="Marker2D2" type="Marker2D" parent="Game/BossPositions" index="1"]
-position = Vector2(820, 180)
+position = Vector2(820, 200)
 
 [node name="Marker2D3" type="Marker2D" parent="Game/BossPositions" index="2"]
 position = Vector2(640, 90)
-
-[node name="Boss" parent="Game" index="8" instance=ExtResource("3_erjbq")]
 
 [node name="LevelProgress" parent="LevelProgressionPoints" index="0" instance=ExtResource("3_0djiu")]
 

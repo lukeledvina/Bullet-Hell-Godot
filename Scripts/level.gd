@@ -5,6 +5,8 @@ var offset: Vector2 = Vector2.ZERO
 var floaty_path_1_offset: Vector2 = Vector2(300, 0)
 var parallel_offset: Vector2 = Vector2(30, -30)
 
+var boss_center_position: Vector2 = Vector2(640, 160)
+
 var floaty: PackedScene = preload("res://Scenes/Enemies/floaty.tscn")
 var floaty_path_1: PackedScene = preload("res://Scenes/EnemyPaths/floaty_path_1.tscn")
 
@@ -42,6 +44,9 @@ func _on_enemy_killed(score_value, damage_power_up_progress, life_power_up_progr
 
 	# increment values needed to spawn the power ups, if the values are reached, spawn them
 	power_up_manager.update_values(damage_power_up_progress, life_power_up_progress, enemy_position)
+
+func _on_boss_killed(boss_position, damage_power_up_amount, life_power_up_amount):
+	power_up_manager.boss_killed(boss_position, damage_power_up_amount, life_power_up_amount)
 
 
 func _on_enemy_projectile_created(projectile):
