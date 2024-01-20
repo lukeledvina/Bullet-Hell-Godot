@@ -51,8 +51,6 @@ func _on_damage_power_up_collected():
 		Globals.score += 1000
 		score_number_label.text = str(Globals.score)
 	else:
-	
-		#This currently does nothing	
 		Globals.player_damage += 1
 		
 	if Globals.player_damage % damage_upgrade_breakpoint == 0:

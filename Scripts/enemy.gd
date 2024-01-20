@@ -10,7 +10,7 @@ var can_attack: bool = true
 
 
 
-@export var health: int = 1:
+@export var health: int = 100:
 	set(value):
 		if value <= 0:
 			emit_signal("enemy_killed", score_value, damage_power_up_value, life_power_up_value, global_position)
@@ -33,7 +33,7 @@ var can_attack: bool = true
 
 
 @onready var rotater: Node2D = $Rotater
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var player: CharacterBody2D = $"../../../../Player"
 @onready var enemy_projectile_container: Node2D = $"../../../../EnemyProjectiles"

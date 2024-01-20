@@ -20,7 +20,7 @@ var evil_floaty: PackedScene = preload("res://Scenes/Enemies/evil_floaty.tscn")
 @onready var life_power_up_label: Label = $UserInterface/MarginContainer/PowerUpContainer/LifePowerUpContainer/LifeProgressNumber
 @onready var game: Node2D = $Game
 @onready var enemy_projectile_container: Node2D = $Game/EnemyProjectiles
-@onready var borders: Node2D = $Game/Borders
+@onready var borders: Node2D = $UserInterface/Borders
 @onready var enemy_paths: Node2D = $Game/EnemyPaths
 @onready var power_up_manager: Node = $PowerUpManager
 

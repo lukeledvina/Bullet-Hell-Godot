@@ -1,29 +1,25 @@
+this game doesn't have to be fun, just use it to learn how to manage larger projects, how to make art, sfx, vfx, music, etc...
+
+Touhou 6 has 2 enemy types on the first level, but they each use a bunch of different paths, so follow that approach
+
 TODO:
-	Power-ups that occasionally drop from enemies that are missable
-		one type improves damage, size, etc. of player projectile
-		another can build up to restore a life if you collect enough
-		
-		the purpose is to force the player to be constantly making decisions and weighing risk/reward, for potential long or short term benefit
-		
-		green -> 1/10 for life upgrade -> (max lives is 5)
-		red -> adds dmg + small size increase, certain breakpoints make more noticable changes (max is 150, lose 5 on death that can be recollected (maybe))
-
-		DROP RATE -> kill x amt of enemies, get one, certain types of enemies always drop one...
-
-
+	boss base scene implementation
+	
+	make the level
+	
 
 Design the first level
-	More types of enemies
 	More paths
 	Script the spawn points
 	
-	Boss enemy implementation
+	Once first level gameplay is finished, then start putting in your own art + music
 	
-	Once first level is finished, then start putting in your own art + music
-	
-Once the general idea for the first level is in place for gameplay, art, and music, start working on other levels
+Finish vertical slice of first level
 
 
+Boss Design
+	They will move to certain points, stay there and attack, once the attack ends, they will move again and do a different attack. Potentially could have several phases that depend on max health percentages remaining.
+		
 
 Setting
 	Post-apocalyptic world w/ mechanical beings that have intertwined with an overgrowing city + environment. ( Think Nier Automata )
@@ -33,9 +29,15 @@ Setting
 
 
 Types of enemies:
-	Who is our goomba?, a simple enemy that does not even shoot
 	
 	
 Develop a visual language:
 	What colors mean what,
 	what shapes, vfx, etc...
+	
+	
+	
+	
+Lessons learned:
+	Don't organize file structure like this, keep scene script and assets together in their own folder relating to a single entity
+	try using composition next instead of inheritance (make your own godot nodes)
