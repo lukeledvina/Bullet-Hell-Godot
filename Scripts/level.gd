@@ -80,6 +80,9 @@ func spawn_enemies(enemy_type: PackedScene, amount: int, path_scene: PackedScene
 		new_enemy.connect("enemy_killed", _on_enemy_killed)
 		new_enemy.connect("enemy_projectile_created", _on_enemy_projectile_created)
 		path.call_deferred("add_child", path_follow)
+		
+		new_enemy.attack_point = path.attack_point
+		
 		await get_tree().create_timer(time_between).timeout
 	
 	# free the path after x seconds

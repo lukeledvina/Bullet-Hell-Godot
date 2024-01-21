@@ -19,6 +19,7 @@ var can_be_damaged: bool = true
 @onready var player_projectile_container: Node2D = $"../PlayerProjectiles"
 @onready var level: Node2D = $"../../"
 @onready var shoot_sound_player: AudioStreamPlayer = $ShootSoundPlayer
+@onready var invincibilty_timer: Timer = $InvincibilityTimer
 
 
 func _process(delta):
@@ -65,8 +66,10 @@ func _on_projectile_cooldown_timeout():
 
 
 func _on_player_death_timer_timeout():
-	collision_shape.call_deferred("set_disabled", false)
 	position = spawn_pos
 	Globals.player_alive = true
+	invincibilty_timer.start()
+	
+func _on_invincibility_timer_timeout():
+	collision_shape.call_deferred("set_disabled", false)
 	can_be_damaged = true
-

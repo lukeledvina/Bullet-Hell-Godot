@@ -22,12 +22,12 @@ var can_attack: bool = true
 @export var life_power_up_value: int = 1
 @export var score_value: int = 100
 @export var progress_speed: float = 100
-@export var attack_point: float = 300
+var attack_point: float = 300
 @export var spawn_point_count: int = 1
 @export var projectile_speed: int = 100
-@export var arc_degrees: int = 60
+@export var arc_degrees: int = 360
 @export var spacing: int = 15
-@export var rows: int = 5
+@export var rows: int = 1
 @export var radius: int = 20
 @export var projectile_scene: PackedScene = preload("res://Scenes/enemy_projectile.tscn")
 

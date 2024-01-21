@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgelqsqea60ur"]
+[gd_scene load_steps=3 format=3 uid="uid://bgelqsqea60ur"]
+
+[ext_resource type="Script" path="res://Scripts/floaty_path_1.gd" id="1_8nlc1"]
 
 [sub_resource type="Curve2D" id="Curve2D_acftg"]
 _data = {
@@ -8,3 +10,4 @@ point_count = 4
 
 [node name="FloatyPath1" type="Path2D"]
 curve = SubResource("Curve2D_acftg")
+script = ExtResource("1_8nlc1")

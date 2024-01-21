@@ -2,10 +2,14 @@ this game doesn't have to be fun, just use it to learn how to manage larger proj
 
 Touhou 6 has 2 enemy types on the first level, but they each use a bunch of different paths, so follow that approach
 
+It should probably be possible to kill all enemies
+
 TODO:
-	boss base scene implementation
+	make the level ( less than 4 minutes long )
 	
-	make the level
+	boss health bar UI
+	
+	MAKE LARGER SPRITES (64x64, or larger)
 	
 
 Design the first level
@@ -16,28 +20,21 @@ Design the first level
 	
 Finish vertical slice of first level
 
-
-Boss Design
-	They will move to certain points, stay there and attack, once the attack ends, they will move again and do a different attack. Potentially could have several phases that depend on max health percentages remaining.
-		
-
 Setting
 	Post-apocalyptic world w/ mechanical beings that have intertwined with an overgrowing city + environment. ( Think Nier Automata )
 	
 	Player is a female protag, with some mechanical parts ( similar to the legendary "P" ) ->>> P ORGAN POSSIBLE....
+		Flying a ship...
 	
 
-
-Types of enemies:
-	
-	
 Develop a visual language:
 	What colors mean what,
 	what shapes, vfx, etc...
 	
-	
-	
-	
 Lessons learned:
 	Don't organize file structure like this, keep scene script and assets together in their own folder relating to a single entity
 	try using composition next instead of inheritance (make your own godot nodes)
+
+
+Potentials:
+	Each enemy killed drops x amt of exp, at level breakpoints you can choose an upgrade (like vampire survivors)

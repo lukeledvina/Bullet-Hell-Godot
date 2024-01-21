@@ -8,8 +8,8 @@ size = Vector2(32, 32)
 
 [node name="Eddy" instance=ExtResource("1_5ygc8")]
 progress_speed = 200.0
-attack_point = 450.0
-spawn_point_count = 3
+spawn_point_count = 5
+arc_degrees = 180
 rows = 2
 
 [node name="CollisionShape2D" parent="." index="0"]

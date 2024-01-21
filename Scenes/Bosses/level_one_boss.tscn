@@ -4,10 +4,13 @@
 [ext_resource type="Script" path="res://Scripts/level_one_boss.gd" id="2_o0vd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t45pw"]
-size = Vector2(16, 16)
+size = Vector2(32, 38)
 
 [node name="LevelOneBoss" instance=ExtResource("1_2raqm")]
 script = ExtResource("2_o0vd6")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(2, 2.375)
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_t45pw")

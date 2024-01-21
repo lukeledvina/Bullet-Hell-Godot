@@ -31,8 +31,12 @@ position = Vector2(0, -6)
 [node name="LevelProgress5" parent="LevelProgressionPoints" index="4" instance=ExtResource("3_55fgh")]
 position = Vector2(0, -8)
 
+[node name="LevelProgress6" parent="LevelProgressionPoints" index="5" instance=ExtResource("3_55fgh")]
+position = Vector2(0, -10)
+
 [connection signal="area_entered" from="LevelProgressionPoints/LevelProgress" to="." method="_on_level_progress_area_entered"]
 [connection signal="area_entered" from="LevelProgressionPoints/LevelProgress2" to="." method="_on_level_progress_2_area_entered"]
 [connection signal="area_entered" from="LevelProgressionPoints/LevelProgress3" to="." method="_on_level_progress_3_area_entered"]
 [connection signal="area_entered" from="LevelProgressionPoints/LevelProgress4" to="." method="_on_level_progress_4_area_entered"]
 [connection signal="area_entered" from="LevelProgressionPoints/LevelProgress5" to="." method="_on_level_progress_5_area_entered"]
+[connection signal="area_entered" from="LevelProgressionPoints/LevelProgress6" to="." method="_on_level_progress_6_area_entered"]

@@ -46,5 +46,10 @@ one_shot = true
 [node name="PlayerDeathTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="ProjectileCooldown" to="." method="_on_projectile_cooldown_timeout"]
 [connection signal="timeout" from="PlayerDeathTimer" to="." method="_on_player_death_timer_timeout"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

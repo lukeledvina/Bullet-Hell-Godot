@@ -7,9 +7,10 @@
 radius = 15.1327
 
 [node name="EvilFloaty" instance=ExtResource("1_wd0xm")]
-spawn_point_count = 5
+progress_speed = 150.0
+spawn_point_count = 3
 arc_degrees = 90
-rows = 4
+rows = 3
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_mpbm6")
